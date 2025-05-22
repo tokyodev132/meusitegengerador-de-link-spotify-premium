@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador Fictício de Spotify Premium</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1DB954, #191414);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      animation: fadeIn 1s ease forwards;
+    }
+    button {
+      background-color: #1DB954;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #17a14a;
+    }
+    #linkGerado {
+      margin-top: 20px;
+      word-break: break-all;
+      font-weight: bold;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Gerador de link Premium</h1>
+  <p>Clique para gerar um link exclusivo!</p>
+  
+  <button onclick="gerarLink()">🎵 Gerar Link</button>
+  
+  <div id="linkGerado"></div>
+  
+  <button id="copiarBtn" style="display:none;" onclick="copiarLink()">📋 Copiar Link</button>
+  
+  <p id="contador">Links gerados: 0</p>
+</div>
+
+<script>
+  const links = [
+    'https://www.spotify.com/br-pt/ppt/microsoft/?code=6tnQ6YqRtr',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=HwOtmaz9Ah',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=kHQCyXWlRP',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=sGOP0kRAWV',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=7xR021haM2',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=cg97doDvsP',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=AFwZtbhbfV',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=6X7SNYzafQ',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=XCHtxTDxct',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=cBtwpvZckg',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=QPFDQqMYyE',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=ACudaa75it',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=5pyWLfxmYA',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=29ZL955zJd',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=XRF0NjPUAU',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=yNODeuMfeq',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=n8o05UaSvE',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=OtFi0OCN5I',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=CAATThWivD',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=Sl5tQTWS42',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=IruXaZOiVO',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=0CT8iPe4Uq',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=K5OwdKpYZU',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=T4rzRLrwaJ',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=Je5kWNiAEM',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=AfVyCbZCm6',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=YmieBlRH1d',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=UTCnbNw9U7',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=n676iASng0',
+'https://www.spotify.com/br-pt/ppt/microsoft/?code=Iup2LbwO6J'
+
+  ];
+
+  let linkAtual = '';
+  let totalGerados = 0;
+
+  function gerarLink() {
+    const sorteado = links[Math.floor(Math.random() * links.length)];
+    linkAtual = sorteado;
+    document.getElementById('linkGerado').innerHTML = `🔗 <a href="${sorteado}" target="_blank">${sorteado}</a>`;
+    document.getElementById('copiarBtn').style.display = 'inline-block';
+    
+    totalGerados++;
+    document.getElementById('contador').innerText = `Links gerados: ${totalGerados}`;
+  }
+
+  function copiarLink() {
+    if(linkAtual) {
+      navigator.clipboard.writeText(linkAtual).then(() => {
+        alert('Link copiado com sucesso!');
+      }, () => {
+        alert('Falha ao copiar o link.');
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
